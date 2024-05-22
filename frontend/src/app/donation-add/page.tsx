@@ -30,7 +30,7 @@ export default function DonationAdd() {
   const id = searchParams.get('id')
   const [organizations, setOrganizations] = useState<IOrganizationData[]>([]);
   const [selectedOrganization, setSelectedOrganization] = useState<IOrganizationData | null>(null)
-  const [donationRow, setDonationRow] = useState<IDonationChange | null>(null)
+  const [donationNotified, setDonationNotified] = useState(false)
 
   const [isNewDonation, setIsNewDonation] = useState<boolean>(false)
 
@@ -63,7 +63,7 @@ export default function DonationAdd() {
     const data = await getDonation(id);
 
     if (data) {
-      setDonationRow(data)
+      setDonationNotified(data.isDonationNotified || false)
       setSelectedOrganization(data.organization)
       fillFormWithExistingData(data)
     }
@@ -91,7 +91,7 @@ export default function DonationAdd() {
       } as IDonationChange
       await createDonation(donation)
     } else {
-      if (donationRow?.isDonationNotified === true) {
+      if (donationNotified === true) {
         toastMessage("You cannot change a donation that has already been notified!", "warning");
         return
       }
