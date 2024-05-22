@@ -37,10 +37,6 @@ The Email System for Nonprofit Organizations by Temelio was developed to automat
 ### Docker Integration
 - Docker and Docker Compose are used to containerize and manage the entire application stack, providing easy setup and deployment.
 
-  <p align="center">
-    <img src="./images/docker.png" alt="Docker Image" style="width: 600px;">
-  </p>
-
 
 ## Environment Setup
 
